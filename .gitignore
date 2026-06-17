@@ -1,0 +1,23 @@
+# Local tooling / agent config (never publish)
+.claude/
+.codex/
+
+# Secrets & environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies / build artifacts (for any future code)
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
