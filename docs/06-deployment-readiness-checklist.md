@@ -2,7 +2,7 @@
 
 What to confirm before an AI feature goes to production — and what must exist so that when it misbehaves (it will), you can see it and recover. This is the checklist I walk before shipping and the one I expect a reviewer to hold me to.
 
-> Shipping an AI feature isn't done when it works once. It's done when it's observable, bounded, and reversible.
+> Treat an AI feature as production-ready only when it is observable, bounded, and reversible. Working once in a demo is not the bar.
 
 ---
 
@@ -48,39 +48,46 @@ REQUEST_TIMEOUT_MS=30000     # provider call timeout
 - [ ] Vector index parameters match the embedding model (metric, dimensions).
 - [ ] New query patterns introduced by this change have supporting indexes — verified with a query plan, not assumed.
 
-## 6. Provider timeout / retry handling
+## 6. Model & provider lifecycle
+
+- [ ] Model **and** embedding versions are pinned (not "latest") so behavior doesn't drift under you.
+- [ ] You track provider deprecation notices — vendors retire model snapshots on a schedule, and a forced migration mid-incident is the worst time to discover it.
+- [ ] A model/provider change has a migration path: re-run the eval gate, plan re-embedding if the embedding model changes, and keep the prior version rollback-able.
+- [ ] Where the product warrants it, a secondary provider/model is identified so a deprecation or outage isn't a single point of failure.
+
+## 7. Provider timeout / retry handling
 
 - [ ] Every external call (LLM, embeddings, vector store, third-party) has an explicit **timeout**.
 - [ ] Retries are bounded with exponential backoff + jitter, only on retryable errors (`429`, `5xx`, timeout).
 - [ ] A **circuit breaker** prevents retry storms from amplifying an outage into a cost/latency incident.
 - [ ] Idempotency protects expensive/irreversible actions from double execution on retry.
 
-## 7. Fallback behavior
+## 8. Fallback behavior
 
 - [ ] When the AI provider is down/slow/rate-limited, the user gets a graceful, honest message — not a hang or a stack trace.
 - [ ] Where feasible, a fallback exists (secondary model/provider, cached result, queued-for-later, or degraded-but-safe mode).
 - [ ] Fallbacks never compromise isolation or skip security checks to "keep working."
 
-## 8. Observability
+## 9. Observability
 
 - [ ] Structured logs with request ID, workspace ID, model, prompt version, token counts, latency, and outcome (redacted of PII).
 - [ ] Metrics: request rate, error rate, latency (p50/p95/p99), token usage, cost — per model/endpoint.
 - [ ] Tracing across the request path (retrieval → model → post-processing) for debugging slow/failed calls.
 - [ ] Alerts on error-rate spikes, latency regressions, and **cost/usage anomalies**.
 
-## 9. Token / cost monitoring
+## 10. Token / cost monitoring
 
 - [ ] Token usage and spend are tracked per user/workspace/feature and visible on a dashboard.
 - [ ] Spend caps / circuit breakers are armed; alerts fire before, not after, a budget blowout.
 - [ ] A baseline cost-per-request is known so regressions are detectable.
 
-## 10. Smoke tests
+## 11. Smoke tests
 
 - [ ] Post-deploy smoke tests hit the critical AI paths (ingest a doc, ask a question, get a grounded answer, trigger a refusal) against the live environment.
 - [ ] Health/readiness endpoints check downstream dependencies (DB, vector store, provider reachability).
 - [ ] Smoke tests run automatically after deploy and block/flag a bad release.
 
-## 11. Rollback plan
+## 12. Rollback plan
 
 - [ ] Code rollback is a one-step, tested operation (previous build redeployable).
 - [ ] **Prompt/model/retrieval config can be rolled back independently** of code (flag/config) — the last known-good version is identified.
@@ -96,6 +103,7 @@ REQUEST_TIMEOUT_MS=30000     # provider call timeout
 | Config validated + `.env.example` current | ☐ |
 | Secrets server-side, scanned | ☐ |
 | Migrations reversible + indexes in place | ☐ |
+| Models/embeddings pinned; deprecation tracked | ☐ |
 | Timeouts, bounded retries, circuit breaker | ☐ |
 | Fallback for provider failure | ☐ |
 | Logs / metrics / cost monitoring live | ☐ |

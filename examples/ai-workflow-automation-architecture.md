@@ -2,6 +2,8 @@
 
 A worked reference architecture for an AI workflow that triages incoming support requests, drafts responses grounded in a knowledge base, and **routes sensitive actions through human approval**. The defining constraint here is *side effects*: this system can email customers and modify tickets, so correctness and approval gates matter more than raw answer quality.
 
+**Example stack (illustrative, not prescriptive):** an API plus a queue and workers for runs (e.g. Postgres-backed jobs or a managed queue); a state store for the run state machine; the same retrieval stack as the RAG chatbot for help-center search; an action layer wrapping outbound integrations (email, ticketing) behind an allowlist; a hosted LLM provider.
+
 ---
 
 ## Use case

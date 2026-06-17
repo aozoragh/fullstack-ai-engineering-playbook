@@ -2,7 +2,9 @@
 
 A worked reference architecture for a multi-tenant chatbot that answers questions **strictly from a workspace's uploaded documents**, with citations and honest refusal when the answer isn't in the documents.
 
-This is the canonical RAG product. The hard parts are not "calling the model" — they are isolation, retrieval quality, and refusal.
+This is the canonical RAG product. Calling the model is the easy part; the engineering goes into isolation, retrieval quality, and refusal.
+
+**Example stack (illustrative, not prescriptive):** a TypeScript or Python API; Postgres for document and chunk metadata; pgvector or a managed vector store for embeddings; object storage for raw files; a job queue for async ingestion; a hosted LLM + embedding provider. The playbook is vendor-neutral — swap any layer.
 
 ---
 
@@ -71,7 +73,7 @@ See [`../diagrams/rag-pipeline.md`](../diagrams/rag-pipeline.md).
 | Empty/low retrieval | Confident wrong answer | Score threshold → refusal path |
 | Cross-tenant leak | User sees another workspace's content | Tenant filter in data layer + isolation test |
 | Injection via uploaded doc | Model follows doc instructions / leaks prompt | Retrieved text = untrusted; guardrails; refusal test |
-| Image-only PDF | Indexed as blank → "not found" everywhere | Detect empty extraction; flag/ OCR |
+| Image-only PDF | Indexed as blank → "not found" everywhere | Detect empty extraction; flag / OCR |
 | Stale index | Answers from deleted/old docs | Re-index on update; delete vectors on delete |
 | Provider timeout | Hanging chat | Timeout + bounded retry + fallback message |
 | Cost blowup | High bill from big `top_k`/context | Bounded `top_k` + context budget + monitoring |

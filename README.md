@@ -18,17 +18,13 @@ It reflects how I work as a full-stack engineer: I treat prompts and retrieval a
 
 ## What this playbook covers
 
-- **RAG architecture** — ingestion, chunking, embeddings, retrieval quality, hybrid search, source-grounded answers, and weak-context refusal.
-- **LLM application security** — server-side secrets, PII handling, prompt injection, untrusted retrieved content, rate/usage limits, and workspace isolation.
-- **Prompt versioning** — treating prompts as versioned product logic with IDs, model settings, output schemas, and rollback.
-- **Cost & token optimization** — model selection, context control, caching, batching, and per-user cost accounting.
-- **AI evaluation** — deterministic checks, golden question sets, RAG and workflow evaluation, and release gates.
-- **Deployment readiness** — environment config, migrations, provider retries, observability, smoke tests, and rollback.
-- **API design** — patterns for documents, chunks, chat sessions, workflow runs, usage tracking, idempotency, and async jobs.
-- **Testing strategy** — unit/integration/E2E plus AI-specific regression, source-matching, and refusal tests.
-- **PR review workflow** — review priorities and AI-specific checklists for prompt, RAG, and cost changes.
+Nine checklists across the lifecycle of an AI feature:
 
-Plus copy-paste **templates**, worked **architecture examples**, and **Mermaid diagrams**.
+- **Build correctly** — RAG architecture, prompt versioning, API design.
+- **Keep it safe and affordable** — LLM security, cost & token control.
+- **Prove it works and ship it** — evaluation, testing, deployment readiness, PR review.
+
+Each is a decision-oriented checklist, not a tutorial. The annotated [repository structure](#repository-structure) below maps every file. Alongside the docs: copy-paste **templates**, worked **architecture examples**, and **Mermaid diagrams**.
 
 ---
 
@@ -86,11 +82,11 @@ fullstack-ai-engineering-playbook/
 
 ---
 
-## Related portfolio projects
+## Where these patterns apply
 
-These are the kinds of products this playbook is meant to support. Each applies the checklists and architecture patterns here.
+The product types this playbook is written for. The patterns here map directly onto each — the [`examples/`](examples/) directory works three of them through in detail.
 
-| Project | What it demonstrates |
+| Product type | Patterns it exercises |
 | --- | --- |
 | **AI Document RAG Chatbot** | Document ingestion, source-grounded answers, weak-context refusal, per-workspace isolation. |
 | **AI Customer Support Automation Dashboard** | Workflow automation, human-in-the-loop approval, usage tracking, escalation paths. |

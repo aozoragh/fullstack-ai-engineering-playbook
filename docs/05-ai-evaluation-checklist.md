@@ -2,7 +2,7 @@
 
 You cannot improve — or safely change — what you don't measure. AI evaluation is how you turn "it seems better" into a release decision. This checklist favors **cheap, deterministic checks first**, human review where it matters, and LLM-as-judge only once it's validated against humans.
 
-> The point of evaluation isn't a perfect score. It's a **gate**: does this change beat the current production version without regressing safety, and at acceptable cost?
+> Evaluation exists to answer one question before you ship: does this change beat the current production version without regressing safety, at acceptable cost? A high score that can't answer that is not the goal — the **gate** is.
 
 ---
 

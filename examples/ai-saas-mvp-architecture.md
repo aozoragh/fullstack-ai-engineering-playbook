@@ -2,6 +2,8 @@
 
 A worked reference architecture for a **multi-tenant AI SaaS MVP**: auth, billing, usage limits, and one AI feature wired end-to-end — built so it can grow without rewriting the foundations. The goal of an MVP is to be *small but not fragile*: ship fast, but get isolation, metering, and cost bounds right from day one because they're expensive to retrofit.
 
+**Example stack (illustrative, not prescriptive):** a single web app (e.g. Next.js, or a Node/Python API with an SPA); Postgres with tenant-scoped rows (and row-level security where it fits); an auth library or provider; a billing provider for plans and entitlements; the AI feature behind a server-side service; logs, metrics, and cost data to a hosted observability tool. A monolith with clean module boundaries beats microservices at this stage.
+
 ---
 
 ## Use case

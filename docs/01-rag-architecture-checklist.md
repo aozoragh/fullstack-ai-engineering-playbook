@@ -2,7 +2,7 @@
 
 A practical, end-to-end checklist for building a Retrieval-Augmented Generation system that is **correct, isolated, and honest about what it doesn't know**. Use it during design, implementation, and review.
 
-The single most important RAG property: **the answer must be grounded in retrieved content, and the system must refuse when it can't ground.** Everything below serves that goal.
+The property everything below protects: **the answer must be grounded in retrieved content, and the system must refuse when it can't ground it.**
 
 ---
 

@@ -2,7 +2,7 @@
 
 How I review (and expect reviews of) changes to AI products. A good review is ordered by risk, specific in its findings, and especially careful about the things that don't show up in a passing test: prompt changes, retrieval changes, and cost.
 
-> A PR isn't "done" because it works on the author's machine. It's done when a reviewer can see *why* it's correct, *how* it's bounded, and *how* to undo it.
+> A reviewer should be able to see from the PR alone *why* a change is correct, *how* it's bounded, and *how* to undo it. "It works on my machine" doesn't show any of those.
 
 ---
 
