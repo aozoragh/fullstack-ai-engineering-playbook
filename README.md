@@ -28,11 +28,11 @@ Each is a decision-oriented checklist, not a tutorial. The annotated [repository
 
 ---
 
-## Who this is for
+## Portfolio positioning
 
-- **Technical clients** evaluating whether I can ship production AI work, not just demos.
-- **Engineering managers** assessing architecture and review judgment.
-- **Developers** reviewing my GitHub profile who want to see how I think about AI systems.
+This repo shows how I approach **full-stack AI product development** — the architecture and engineering discipline behind **RAG systems**, **AI SaaS MVPs**, and **AI workflow automation**, with security, evaluation, cost control, and review built in rather than bolted on afterward. The aim is to demonstrate *how* I build, not just *that* I can.
+
+It is written for technical clients and engineering managers weighing architecture and review judgment, and for developers who want to see how I reason about AI systems. The product types it targets are mapped in [Where these patterns apply](#where-these-patterns-apply); three are worked through end to end in [`examples/`](examples/).
 
 ---
 
@@ -43,6 +43,7 @@ Each is a decision-oriented checklist, not a tutorial. The annotated [repository
 - **Reviewing a PR?** Pair [`docs/09-github-pr-review-workflow.md`](docs/09-github-pr-review-workflow.md) with [`templates/pr-review-checklist.md`](templates/pr-review-checklist.md).
 - **Shipping to production?** Walk [`docs/06-deployment-readiness-checklist.md`](docs/06-deployment-readiness-checklist.md) and [`templates/deployment-checklist.md`](templates/deployment-checklist.md).
 - **Want a reference architecture?** Read the worked examples in [`examples/`](examples/).
+- **Prefer a visual?** The [`diagrams/`](diagrams/) folder has Mermaid flowcharts for the RAG pipeline, the workflow builder, and the deployment flow.
 
 The checklists are meant to be copied into issues, PR descriptions, and design docs — not just read once.
 

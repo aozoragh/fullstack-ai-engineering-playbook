@@ -99,3 +99,21 @@ End with a short summary: blocking issue count, the single highest-risk item, an
 - Do not rewrite the whole file when a targeted fix will do.
 - Do not pad the review with style nits while missing a security or isolation bug.
 - Do not claim a change is "fully tested" or "secure" — describe what is and isn't covered.
+
+---
+
+## Reference
+
+These instructions condense the playbook. For the full rationale and checklists behind each focus area:
+
+| Focus area | Playbook doc |
+| --- | --- |
+| RAG correctness, data isolation | [`docs/01-rag-architecture-checklist.md`](docs/01-rag-architecture-checklist.md) |
+| Security, privacy, prompt injection | [`docs/02-llm-app-security-checklist.md`](docs/02-llm-app-security-checklist.md) |
+| Prompt changes | [`docs/03-prompt-versioning-strategy.md`](docs/03-prompt-versioning-strategy.md) |
+| Cost & token control | [`docs/04-cost-and-token-optimization.md`](docs/04-cost-and-token-optimization.md) |
+| Evaluation & release gates | [`docs/05-ai-evaluation-checklist.md`](docs/05-ai-evaluation-checklist.md) |
+| Deployment readiness | [`docs/06-deployment-readiness-checklist.md`](docs/06-deployment-readiness-checklist.md) |
+| API design | [`docs/07-api-design-patterns.md`](docs/07-api-design-patterns.md) |
+| Testing | [`docs/08-testing-strategy.md`](docs/08-testing-strategy.md) |
+| PR review workflow | [`docs/09-github-pr-review-workflow.md`](docs/09-github-pr-review-workflow.md) |

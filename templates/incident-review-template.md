@@ -71,3 +71,7 @@
 
 ---
 **Sign-off:** ____  ·  **Date:** ____
+
+---
+
+> **In this playbook:** pairs with the [deployment readiness](../docs/06-deployment-readiness-checklist.md) and [evaluation](../docs/05-ai-evaluation-checklist.md) checklists. Delete this line when you copy the template into a project.

@@ -103,3 +103,7 @@
 - [ ] Cost bounds and worst-case stated
 - [ ] Failure/fallback behavior specified
 - [ ] Rollback plan exists
+
+---
+
+> **In this playbook:** pairs with the [evaluation](../docs/05-ai-evaluation-checklist.md), [security](../docs/02-llm-app-security-checklist.md), and [cost](../docs/04-cost-and-token-optimization.md) checklists. Delete this line when you copy the template into a project.
